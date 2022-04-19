@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  api:
+    container_name: api.redisdemo
+    hostname: api.redisdemo.com
+    image: spring-redis-demo:0.0.1-SNAPSHOT
+    ports:
+      - "8080:8080"
+    networks:
+      - redisdemo
+
+  redis:
+    container_name: redis.redisdemo
+    hostname: redis.redisdemo.com
+    image: redis:alpine
+    command: redis-server /usr/local/etc/redis/redis.conf --requirepass mypassword
+    ports:
+      - "6379:6379"
+    volumes:
+      - $PWD/docker/redis:/usr/local/etc/redis/redis.conf
+    networks:
+      - redisdemo
+
+networks: 
+  redisdemo:
+    driver: bridge
