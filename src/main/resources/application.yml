@@ -4,6 +4,6 @@ spring:
         type: redis
 
     redis:
-        host: redis.redisdemo.com
+        host: 192.168.144.2
         port: 6379
         password: mypassword
