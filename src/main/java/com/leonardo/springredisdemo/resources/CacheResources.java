@@ -10,6 +10,7 @@ import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -47,7 +48,7 @@ public class CacheResources {
         return cars.get(id);
     }
 
-    @GetMapping("/add/{car}")
+    @PostMapping("/add/{car}")
     //Anotação que o cache irá ser limpo sempre que esse método for executado
     @CacheEvict(allEntries = true)
     public void addCar(@PathVariable String car){
